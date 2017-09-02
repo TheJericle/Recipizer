@@ -1,13 +1,23 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+# ******************************************
+# **       RECIPIZER                      **
+# **       © 2017                         **
+# ******************************************
+
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
+
 from Recipe_Class import Recipe
 import random
 import os
 from Shopping_List_Class import ShoppingList
 
-class RecipeBook(object):
-    def __init__(self):
+# -----------------------------------------------------------------
 
+class RecipeBook(object):
+
+    def __init__(self):
         self._Recipe_List = []
 
     def append(self, rp):
@@ -82,3 +92,5 @@ class RecipeBook(object):
             new_recipe.parser(rp)
             self.append(new_recipe)
             print "completed"
+
+# -----------------------------------------------------------------

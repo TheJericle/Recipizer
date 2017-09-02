@@ -1,8 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+# ******************************************
+# **       RECIPIZER                      **
+# **       © 2017                         **
+# ******************************************
+
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
 from Tkinter import *
 
+# -----------------------------------------------------------------
 
 class AddIngredientWidget(object):
 
@@ -36,3 +44,5 @@ class AddIngredientWidget(object):
         print self.entry_ing_name.get()
         print self.entry_quantity.get()
         print self.entry_unit.get()
+
+# -----------------------------------------------------------------

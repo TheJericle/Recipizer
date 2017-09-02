@@ -1,10 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+# ******************************************
+# **       RECIPIZER                      **
+# **       © 2017                         **
+# ******************************************
+
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
-from Ingredient_Class import Ingredient
+# Import Recipizer stuff
+from .Ingredient_Class import Ingredient
 
+# -----------------------------------------------------------------
 
 class Recipe(object):
+
     def __init__(self, name=""):
         self._name = name
         self._Ingredients = []
@@ -70,5 +80,4 @@ class Recipe(object):
                 index +=1
                 line = new_recipe[index]
 
-
-
+# -----------------------------------------------------------------

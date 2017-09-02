@@ -1,5 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+# ******************************************
+# **       RECIPIZER                      **
+# **       © 2017                         **
+# ******************************************
+
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
+
+# -----------------------------------------------------------------
 
 class Ingredient(object):
 
@@ -53,3 +62,5 @@ class Ingredient(object):
         self.name = v_str[0]
         self.quantity = float(v_str[1])
         self.unit = v_str[2]
+
+# -----------------------------------------------------------------
