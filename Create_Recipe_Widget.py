@@ -12,8 +12,8 @@ from __future__ import absolute_import, division, print_function
 from Tkinter import *
 
 # Import Recipizer modules
-from .Add_Ingredient_Widget import AddIngredientWidget
-from .DropDownMenu_Widget import DropDownMenu
+from gui.Add_Ingredient_Widget import AddIngredientWidget
+from gui.DropDownMenu_Widget import DropDownMenu
 
 # -----------------------------------------------------------------
 
@@ -26,9 +26,7 @@ class CreateRecipeWidget(object):
         self.addIngredientWidget = AddIngredientWidget(self.frame)
         self.Known_Ingredients = DropDownMenu(self.frame)
 
-
 # -----------------------------------------------------------------
-
 
 root = Tk()
 

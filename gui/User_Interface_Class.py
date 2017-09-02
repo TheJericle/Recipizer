@@ -19,7 +19,7 @@ def Store_Ingredient(event = None):
 
 def Print_Ingredients(event = None):
     for ing in Ingredient_List:
-        print ing
+        print(ing)
 
 # -----------------------------------------------------------------
 
