@@ -8,7 +8,7 @@
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
-# Import Recipizer stuff
+# Import Recipizer modules
 from .Ingredient_Class import Ingredient
 
 # -----------------------------------------------------------------

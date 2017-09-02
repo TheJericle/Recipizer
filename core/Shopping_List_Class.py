@@ -8,9 +8,12 @@
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
-from Ingredient_Class import Ingredient
-#from Recipe_Book_Class import RecipeBook
+# Import external modules
 import os
+
+# Import Recipizer modules
+from .Ingredient_Class import Ingredient
+#from Recipe_Book_Class import RecipeBook
 
 # -----------------------------------------------------------------
 

@@ -8,6 +8,7 @@
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
+# Import external modules
 from Tkinter import *
 
 # -----------------------------------------------------------------

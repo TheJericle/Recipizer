@@ -8,9 +8,12 @@
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
+# Import external modules
 from Tkinter import *
-from Add_Ingredient_Widget import AddIngredientWidget
-from DropDownMenu_Widget import DropDownMenu
+
+# Import Recipizer modules
+from .Add_Ingredient_Widget import AddIngredientWidget
+from .DropDownMenu_Widget import DropDownMenu
 
 # -----------------------------------------------------------------
 

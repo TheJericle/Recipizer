@@ -8,7 +8,8 @@
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
-from Recipe_Book_Class import RecipeBook
+# Import Recipizer modules
+from .core.Recipe_Book_Class import RecipeBook
 
 # -----------------------------------------------------------------
 
