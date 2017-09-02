@@ -1,10 +1,21 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+# ******************************************
+# **       RECIPIZER                      **
+# **       © 2017                         **
+# ******************************************
+
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
-from Ingredient_Class import Ingredient
-#from Recipe_Book_Class import RecipeBook
+# Import external modules
 import os
 
+# Import Recipizer modules
+from .Ingredient_Class import Ingredient
+#from Recipe_Book_Class import RecipeBook
+
+# -----------------------------------------------------------------
 
 class ShoppingList(object):
 
@@ -48,3 +59,5 @@ class ShoppingList(object):
         for ing in self._Ingredient_List:
             f.write(ing.inverse_parser())
             f.write("\n")
+
+# -----------------------------------------------------------------

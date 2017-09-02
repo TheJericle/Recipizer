@@ -1,7 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+# ******************************************
+# **       RECIPIZER                      **
+# **       © 2017                         **
+# ******************************************
+
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
+# Import external modules
 from Tkinter import *
+
+# -----------------------------------------------------------------
 
 def Store_Ingredient(event = None):
     ingredient = user_entry.get()
@@ -10,6 +20,9 @@ def Store_Ingredient(event = None):
 def Print_Ingredients(event = None):
     for ing in Ingredient_List:
         print ing
+
+# -----------------------------------------------------------------
+
 root = Tk()
 
 frame1 = Frame(root)
@@ -29,3 +42,5 @@ button_print_ingredients.bind("<Button-1>",Print_Ingredients)
 button_add_ingredient.bind("<Button-1>",Store_Ingredient)
 
 root.mainloop()
+
+# -----------------------------------------------------------------

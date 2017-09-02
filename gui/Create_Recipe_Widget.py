@@ -1,9 +1,21 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+# ******************************************
+# **       RECIPIZER                      **
+# **       © 2017                         **
+# ******************************************
+
 # Ensure Python 3 compatibility
 from _future_ import absolute_import, division, print_function
 
+# Import external modules
 from Tkinter import *
-from Add_Ingredient_Widget import AddIngredientWidget
-from DropDownMenu_Widget import DropDownMenu
+
+# Import Recipizer modules
+from .Add_Ingredient_Widget import AddIngredientWidget
+from .DropDownMenu_Widget import DropDownMenu
+
+# -----------------------------------------------------------------
 
 class CreateRecipeWidget(object):
 
@@ -15,7 +27,7 @@ class CreateRecipeWidget(object):
         self.Known_Ingredients = DropDownMenu(self.frame)
 
 
-
+# -----------------------------------------------------------------
 
 
 root = Tk()
@@ -23,3 +35,5 @@ root = Tk()
 CreateRecipeWidget(root)
 
 root.mainloop()
+
+# -----------------------------------------------------------------
