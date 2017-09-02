@@ -47,3 +47,9 @@ class AddIngredientWidget(object):
         print (self.entry_unit.get())
 
 # -----------------------------------------------------------------
+
+root = Tk()
+
+AddIngredientWidget(root)
+
+root.mainloop()

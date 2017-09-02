@@ -19,6 +19,6 @@ New_Recipe_Book = RecipeBook()
 
 New_Recipe_Book.parser(filename)
 
-print len(New_Recipe_Book._Recipe_List)
+print(len(New_Recipe_Book._Recipe_List))
 
 # -----------------------------------------------------------------
