@@ -6,7 +6,7 @@
 # ******************************************
 
 # Ensure Python 3 compatibility
-from _future_ import absolute_import, division, print_function
+from __future__ import absolute_import, division, print_function
 
 # Import external modules
 from Tkinter import *
@@ -42,8 +42,8 @@ class AddIngredientWidget(object):
         self.add_ingredient_button.bind("<Button-1>",self.add_ingredient)
 
     def add_ingredient(self,event =None):
-        print self.entry_ing_name.get()
-        print self.entry_quantity.get()
-        print self.entry_unit.get()
+        print (self.entry_ing_name.get())
+        print (self.entry_quantity.get())
+        print (self.entry_unit.get())
 
 # -----------------------------------------------------------------
