@@ -16,7 +16,7 @@ class quantityScroll(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         self.frame = tk.Frame(parent)
-        self.frame.pack(**kwargs)
+        self.frame.grid(**kwargs)
 
         self.hscale   = tk.Scale(self.frame, from_=0, to= 1000)
         self.hscale.config(orient="horizontal")

@@ -19,10 +19,10 @@ class dropdrownmenu(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         self.frame = tk.Frame(parent)
-        self.frame.pack(**kwargs)
+        self.frame.grid(**kwargs)
 
         self.vsb = tk.Scrollbar(self.frame)
-        self.myList = tk.Listbox(self.frame, yscrollcommand = self.vsb.set)
+        self.myList = tk.Listbox(self.frame, yscrollcommand = self.vsb.set, width=20, height=4)
 
         self.vsb.pack(side="right", fill="y")
         self.myList.pack(side="left", fill="both", expand=True)

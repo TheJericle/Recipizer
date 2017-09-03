@@ -15,6 +15,7 @@ import Tkinter as tk
 from gui.add_ingredient import add_ingredient
 from gui.dropdownmenu import dropdrownmenu
 from gui.quantityScroll import quantityScroll
+from gui.addRecipeRules import addRecipeRules
 # -----------------------------------------------------------------
 
 class createrecipe(tk.Frame):
@@ -23,27 +24,31 @@ class createrecipe(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         self.frame = tk.Frame(parent)
-        self.frame.pack()
+        self.frame.grid()
 
-        self.addIngredientWidget = add_ingredient(self.frame, side=tk.TOP)
+        self.addIngredientWidget = add_ingredient(self.frame, column = 0, row = 0, pady = 15)
 
 
         self.dropDownMenuLabel = tk.Label(self.frame, text ="Available Ingredients:")
-        self.dropDownMenuLabel.pack(side=tk.LEFT, fill = tk.Y)
-        self.dropDownMenuWidget = dropdrownmenu(self.frame,side= tk.LEFT)
+        self.dropDownMenuLabel.grid(row =1,column =0)
+
+        self.dropDownMenuWidget = dropdrownmenu(self.frame, column = 0, row = 2, pady = 15)
         self.dropDownMenuWidget.myList.bind("<Double-Button-1>", self.get_currently_selected_ingredient)
 
 
         self.quantityLabel = tk.Label(self.frame,text="Quantity: ")
-        self.quantityLabel.pack(side=tk.LEFT, padx= 20)
-        self.quantityScroll1 = quantityScroll(self.frame, side=tk.RIGHT)
+        self.quantityLabel.grid(row =1, column = 1)
+        self.quantityScroll1 = quantityScroll(self.frame, row = 2, column = 1)
         self.quantityScroll1.hscale.bind("<ButtonRelease-1>", self.get_currently_selected_quantity)
 
+        self.ingredientLabel = tk.Label(self.frame, text = "Shopping List:")
+        self.ingredientLabel.grid(row = 5, column=0,pady = 5)
+        self.ingredientTextBox = tk.Text(self.frame, width=40, height=1)
+        self.ingredientTextBox.grid(row = 6, column =0)
+
+        self.explainText = addRecipeRules(self.frame,row = 0, column  = 6, padx = 20,pady = 50)
+
         self.addIngredientWidget.add_ingredient_button.bind("<Button-1>", self.extract_ingredient)
-        self.ingredientTextBox = tk.Text(width=40, height=5)
-        self.ingredientTextBox.pack(side=tk.BOTTOM)
-
-
 
 
     def get_currently_selected_ingredient(self, event=None):

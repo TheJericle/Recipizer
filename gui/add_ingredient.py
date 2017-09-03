@@ -18,7 +18,7 @@ class add_ingredient(tk.Frame):
         tk.Frame.__init__(self,parent)
 
         self.frame = tk.Frame(parent)
-        self.frame.pack(**kwargs)
+        self.frame.grid(**kwargs)
 
         ###Define the labels in the top left Corner
         self.label_ing_name = tk.Label(self.frame, text = "Ingredient Name :")
@@ -41,7 +41,6 @@ class add_ingredient(tk.Frame):
         ###Define the button, which will extract the given info and save the new ingredient.
         self.add_ingredient_button = tk.Button(self.frame, text="Add Ingredient")
         self.add_ingredient_button.grid(column=2, row=0, rowspan=3)
-        self.add_ingredient_button.bind("<Button-1>", self.button_add_ingredient)
 
     def setIngredientLabel(self, ing_name):
         self.entry_ing_name.delete(0, 'end')
@@ -51,8 +50,5 @@ class add_ingredient(tk.Frame):
         self.entry_quantity.delete(0, 'end')
         self.entry_quantity.insert(0,quantity)
 
-    def button_add_ingredient(self, event=None):
-        print(self.entry_ing_name.get())
-        print(self.entry_quantity.get())
-        print(self.entry_unit.get())
+
 
