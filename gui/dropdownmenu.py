@@ -19,7 +19,7 @@ class dropdrownmenu(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         self.frame = tk.Frame(parent)
-        self.frame.pack()
+        self.frame.pack(**kwargs)
 
         self.vsb = tk.Scrollbar(self.frame)
         self.myList = tk.Listbox(self.frame, yscrollcommand = self.vsb.set)
@@ -31,13 +31,6 @@ class dropdrownmenu(tk.Frame):
         self.vsb.config(orient="vertical", command=self.myList.yview)
         self.getlist()
 
-        #self.myList.bind("<Double-Button-1>",self.get_clicked_value)
-        #self.currentlySelected = tk.StringVar()
-        #self.currentlySelected.set(self.myList.get(tk.ACTIVE))
-
-    #def get_clicked_value(self, event=None):
-     #   self.currentlySelected = self.myList.get(tk.ACTIVE)
-     #   print("yupyup")
 
     ###THIS NEEDS TO GETS FIXED, SO THAT IT WILL ALWAYS FIND THE RIGHT LOCATION FOR THE INGREDIENT FILE
     def getlist(self):
@@ -50,3 +43,13 @@ class dropdrownmenu(tk.Frame):
         for line in f:
             self.myList.insert(tk.END, line)
 
+
+    def addIngredientToList(self,ing_name, quantity, unit):
+        self.myList.insert(tk.END, ing_name)
+        cdir = os.getcwd()
+        filename = "Ingredients.txt"
+
+        fileloc = os.path.join(cdir, filename)
+
+        f = open(fileloc, "a")
+        f.write(ing_name)
