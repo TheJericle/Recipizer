@@ -40,10 +40,16 @@ class dropdrownmenu(tk.Frame):
         fileloc = os.path.join(cdir, filename)
 
         f = open(fileloc, "r")
+        temp_list = []
         for line in f:
+            line.split("\n")
+            temp_list.append(line)
+        temp_list.sort()
+
+        for line in temp_list:
             self.myList.insert(tk.END, line)
 
-
+    ###SAME HERE###
     def addIngredientToList(self,ing_name, quantity, unit):
         self.myList.insert(tk.END, ing_name)
         cdir = os.getcwd()
@@ -52,4 +58,4 @@ class dropdrownmenu(tk.Frame):
         fileloc = os.path.join(cdir, filename)
 
         f = open(fileloc, "a")
-        f.write(ing_name)
+        f.write(ing_name + "\n")

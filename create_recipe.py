@@ -40,6 +40,8 @@ class createrecipe(tk.Frame):
         self.quantityScroll1.hscale.bind("<ButtonRelease-1>", self.get_currently_selected_quantity)
 
         self.addIngredientWidget.add_ingredient_button.bind("<Button-1>", self.extract_ingredient)
+        self.ingredientTextBox = tk.Text(width=40, height=5)
+        self.ingredientTextBox.pack(side=tk.BOTTOM)
 
 
 
@@ -67,7 +69,13 @@ class createrecipe(tk.Frame):
         if not ingredient_currently_present:
             self.dropDownMenuWidget.addIngredientToList(ing_name, quantity, unit)
 
+        self.add_ingredient_to_textbox(ing_name, quantity, unit)
 
+    def add_ingredient_to_textbox(self, ing_name, quantity, unit):
+        ing_name = ing_name.split("\n")[0]
+        self.ingredientTextBox.insert(tk.END,ing_name +"\t" + quantity + "\t" + unit + "\n")
+        cheight = self.ingredientTextBox.cget("height")
+        self.ingredientTextBox.config(height = int(cheight)+1)
 
 root = tk.Tk()
 
