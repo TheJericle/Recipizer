@@ -68,7 +68,6 @@ class Recipe(object):
             index = 3
             line = new_recipe[3]
             while line[0] != "Basic_Explanation:":
-                print line
                 new_ingredient = Ingredient()
                 new_ingredient.parser(line)
                 self.append(new_ingredient)

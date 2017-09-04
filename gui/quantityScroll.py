@@ -13,11 +13,14 @@ import Tkinter as tk
 
 class quantityScroll(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
+        # type: (object, object, object) -> object
         tk.Frame.__init__(self, parent)
 
         self.frame = tk.Frame(parent)
-        self.frame.grid(**kwargs)
-
         self.hscale   = tk.Scale(self.frame, from_=0, to= 1000)
         self.hscale.config(orient="horizontal")
+
+    def grid(self, **kwargs):
+        self.frame.grid(**kwargs)
         self.hscale.pack()
+
