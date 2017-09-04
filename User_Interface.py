@@ -23,7 +23,7 @@ class UserInterface(tk.Frame):
         tk.Frame.__init__(self,parent)
 
         self.frame = tk.Frame(parent)
-        self.frame.pack()
+        self.frame.grid()
 
         self.add_recipe_b = tk.Button(self.frame, text="Create New Recipe")
         self.add_recipe_b.grid(column=0, row=0, padx=20, pady=20)
@@ -31,28 +31,36 @@ class UserInterface(tk.Frame):
         self.request_recipes_b = tk.Button(self.frame, text= "Request Recipes")
         self.request_recipes_b.grid(column=1, row=0)
 
+        self.photo_container = tk.Label()
+        self.set_photo(filename="What_Is_My_Purpose.jpg")
+        self.photo_container.grid(column=0, row=1)
 
         self.add_recipe_b.bind("<Button-1>", self.add_recipes)
         self.request_recipes_b.bind("<Button-1>", self.request_recipes)
 
+    def set_photo(self, filename):
+        cdir = os.getcwd()
+        fileloc = os.path.join(cdir, filename)
+        image = Image.open(fileloc)
+        image.thumbnail((350, 350), Image.ANTIALIAS)
+        photo = ImageTk.PhotoImage(image)
+        self.photo_container.config(image=photo)
+        self.photo_container.image = photo  # keep a reference!
+
     def add_recipes(self, event=None):
 
+        self.set_photo(filename="Szechuan_Sauce.jpg")
         self.createRecipeWindow = Createrecipe(tk.Toplevel())
         self.createRecipeWindow.grid()
+
+
 
         self.createRecipeWindow.addRecipeButton.bind("<Button-1>", self.createRecipeWindow.add_recipe)
 
     def request_recipes(self,event=None):
 
-        cdir = os.getcwd()
-        filename = "1727338_1.jpg"
-        fileloc = os.path.join(cdir,filename)
-        image = Image.open(fileloc)
-        photo = ImageTk.PhotoImage(image)
-        label = tk.Label(image=photo)
-        label.image = photo # keep a reference!
-        label.pack()
-        return None
+        self.set_photo(filename="caaan_do.jpg")
+
 
 root = tk.Tk()
 
