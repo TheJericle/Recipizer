@@ -12,12 +12,13 @@ from __future__ import absolute_import, division, print_function
 import Tkinter as tk
 
 class quantityScroll(tk.Frame):
-    def __init__(self, parent, *args, **kwargs):
+    def __init__(self, parent, range, *args, **kwargs):
         # type: (object, object, object) -> object
         tk.Frame.__init__(self, parent)
 
+
         self.frame = tk.Frame(parent)
-        self.hscale   = tk.Scale(self.frame, from_=0, to= 1000)
+        self.hscale   = tk.Scale(self.frame, from_=range[0], to=range[1])
         self.hscale.config(orient="horizontal")
 
     def grid(self, **kwargs):

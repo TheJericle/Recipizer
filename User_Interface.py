@@ -15,6 +15,7 @@ from PIL import Image, ImageTk
 
 # Import Recipizer modules
 from create_recipe import Createrecipe
+from requestRecipes import RequestRecipes
 
 # -----------------------------------------------------------------
 
@@ -38,6 +39,7 @@ class UserInterface(tk.Frame):
         self.add_recipe_b.bind("<Button-1>", self.add_recipes)
         self.request_recipes_b.bind("<Button-1>", self.request_recipes)
 
+
     ###THIS NEEDS TO BE ADJUSTED SO IT WILL ALWAYS WORKS
     def set_photo(self, filename):
         cdir = os.getcwd()
@@ -55,13 +57,13 @@ class UserInterface(tk.Frame):
         self.createRecipeWindow = Createrecipe(tk.Toplevel())
         self.createRecipeWindow.grid()
 
-
-
         self.createRecipeWindow.addRecipeButton.bind("<Button-1>", self.createRecipeWindow.add_recipe)
 
     def request_recipes(self,event=None):
 
         self.set_photo(filename="caaan_do.jpg")
+        self.RequestRecipesWindow = RequestRecipes(tk.Toplevel())
+        self.RequestRecipesWindow.grid()
 
 
 root = tk.Tk()

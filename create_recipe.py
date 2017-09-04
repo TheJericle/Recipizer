@@ -29,7 +29,6 @@ class Createrecipe(tk.Frame):
 
         self.parent = parent
         self.frame = tk.Frame(parent)
-        self.frame.pack()
 
         #Add Ingredient Widget
         self.addIngredientWidget = AddIngredient(self.frame)
@@ -40,7 +39,7 @@ class Createrecipe(tk.Frame):
 
         #Quantity SCroll widget
         self.quantityLabel = tk.Label(self.frame, text="Quantity: ")
-        self.quantityScroll1 = quantityScroll(self.frame)
+        self.quantityScroll1 = quantityScroll(self.frame, range=(0,1000))
 
         #Shopping_List widget
         self.ingredientLabel = tk.Label(self.frame, text="Shopping List:")
@@ -122,8 +121,6 @@ class Createrecipe(tk.Frame):
             newRecipe.append(str(rule))
         print("GET DESTROYED")
         self.parent.destroy()
-
-
 
     def retreive_shoppingList(self):
 
