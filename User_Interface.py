@@ -38,8 +38,10 @@ class UserInterface(tk.Frame):
         self.add_recipe_b.bind("<Button-1>", self.add_recipes)
         self.request_recipes_b.bind("<Button-1>", self.request_recipes)
 
+    ###THIS NEEDS TO BE ADJUSTED SO IT WILL ALWAYS WORKS
     def set_photo(self, filename):
         cdir = os.getcwd()
+        filename = os.path.join("images\\", filename)
         fileloc = os.path.join(cdir, filename)
         image = Image.open(fileloc)
         image.thumbnail((350, 350), Image.ANTIALIAS)
