@@ -23,11 +23,15 @@ class RequestRecipes(tk.Frame):
         self.Veggie_CheckButton = tk.Checkbutton(self.frame, text="Vegetarian")
         self.Vegan_CheckButton = tk.Checkbutton(self.frame, text="Vegan")
 
+        self.NoPeople_Label = tk.Label(self.frame, text = "How many people?")
+        self.NoPeople = quantityScroll(self.frame, range=(0,20))
 
         self.NoRecipes_Label = tk.Label(self.frame, text="How many Recipes?")
         self.NoRecipes = quantityScroll(self.frame, range=(0,100))
 
         self.receive_shopping_list_b = tk.Button(self.frame, text="Retreive Shopping List")
+
+        self.receive_shopping_list_b.bind("<Button-1>", self.receive_shopping_list)
 
 
     def grid(self, **kwargs):
@@ -35,7 +39,15 @@ class RequestRecipes(tk.Frame):
         self.frame.pack()
         self.Veggie_CheckButton.grid(row=0, column=0,sticky=tk.SW)
         self.Vegan_CheckButton.grid(row=1, column=0,sticky=tk.SW)
-        self.NoRecipes_Label.grid(row=2, column=0)
-        self.NoRecipes.grid(row=3, column=0)
+        self.NoPeople_Label.grid(row=2, column=0)
+        self.NoPeople.grid(row=3, column=0)
+        self.NoRecipes_Label.grid(row=4, column=0)
+        self.NoRecipes.grid(row=5, column=0)
         self.receive_shopping_list_b.grid(row=2, column=1, sticky=tk.N, padx=15)
+
+    def receive_shopping_list(self, event=None):
+
+        #Start by collecting the required data
+        no_people = self.NoPeople.hscale.get()
+        no_recipes = self.NoRecipes.hscale.get()
 
