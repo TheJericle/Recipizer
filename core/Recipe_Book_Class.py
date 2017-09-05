@@ -45,10 +45,18 @@ class RecipeBook(object):
         rv = random.randint(0, len(self._Recipe_List)-1)
         return self._Recipe_List[rv]
 
+    def get_recipes(self, no_recipes):
+        rp_list = []
+        for i in range(no_recipes):
+            new_recipe = self.get_random_recipe()
+            rp_list.append(new_recipe)
+
+        return rp_list
+
     def make_shopping_list(self, rp_list):
 
         new_shopping_list = ShoppingList()
-        ShoppingList.append(self)
+        new_shopping_list.get_ingredients_from_rp_list(rp_list)
 
         return new_shopping_list
 
@@ -92,7 +100,6 @@ class RecipeBook(object):
         for rp in recipe_list:
             new_recipe = Recipe()
             new_recipe.parser(rp)
-            print("yp")
             self.append(new_recipe)
 
     def update_recipe_book(self):

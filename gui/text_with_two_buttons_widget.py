@@ -12,7 +12,7 @@ from __future__ import absolute_import, division, print_function
 import Tkinter as tk
 
 
-class RecipeTemplate(tk.Frame):
+class TextTwoButtons(tk.Frame):
 
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent)
@@ -20,9 +20,14 @@ class RecipeTemplate(tk.Frame):
         self.frame = tk.Frame(parent)
 
         self.textWindow = tk.Text(self.frame)
-        self.Button1 = tk.Button(self.frame, text="Satisfactionary")
-        self.Button2 = tk.Button(self.frame, text="Get This Shit OUTA MY FACE")
+        self.Button1 = tk.Button(self.frame)
+        self.Button2 = tk.Button(self.frame)
 
+    def set_name_button1(self, name):
+        self.Button1.config(text=name)
+
+    def set_name_button2(self, name):
+        self.Button2.config(text=name)
 
     def grid(self, **kwargs):
         self.frame.grid()

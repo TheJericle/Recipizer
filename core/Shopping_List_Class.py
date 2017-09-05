@@ -50,6 +50,12 @@ class ShoppingList(object):
                 break
         return out
 
+    def get_ingredients_from_rp_list(self, rp_list):
+        for rp in rp_list:
+            for ing in rp._Ingredients:
+                self.append(ing)
+
+
     def parser(self):
         cdir = os.getcwd()
         fileloc = os.path.join(cdir,"shoppinglist.txt")

@@ -16,7 +16,7 @@ from gui.add_ingredient import AddIngredient
 from gui.dropdownmenu import dropdrownmenu
 from gui.quantityScroll import quantityScroll
 from gui.addRecipeRules import addRecipeRules
-from gui.recipe_template_window import RecipeTemplate
+from gui.text_with_two_buttons_widget import TextTwoButtons
 
 
 from core.Recipe_Class import Recipe
@@ -143,12 +143,11 @@ class Createrecipe(tk.Frame):
         self.create_recipe_template_window()
 
         template_list = self.new_recipe.inverse_parser()
-        print(template_list)
-        self.textWindow.config(width=40, height=len(template_list))
+        self.template_window.textWindow.config(width=40, height=len(template_list))
 
 
         for i in range(0,len(template_list)):
-            self.textWindow.insert(tk.END, template_list[i] + "\n")
+            self.template_window.textWindow.insert(tk.END, template_list[i] + "\n")
 
 
     def retreive_shoppingList(self):
@@ -178,33 +177,30 @@ class Createrecipe(tk.Frame):
         return recipeRule_List
 
     def retreive_recipe_name(self):
-        print("weee",self.recipe_name_entry.get())
         return self.recipe_name_entry.get()
 
 
     def create_recipe_template_window(self):
-        self.newframe_parent = tk.Toplevel()
-        self.newframe = tk.Frame(self.newframe_parent)
 
-        self.textWindow = tk.Text(self.newframe)
-        self.Button1 = tk.Button(self.newframe, text="Satisfactionary")
-        self.Button2 = tk.Button(self.newframe, text="Get This Shit OUTA MY FACE")
+        self.template_window_parent = tk.Toplevel()
+        self.template_window = TextTwoButtons(self.template_window_parent)
+        self.template_window.grid()
+        self.template_window.set_name_button1("Satisfactionary")
+        self.template_window.set_name_button2("Get This Shit OUTA MY FACE")
+        
+        
 
-        self.newframe.grid()
-        self.textWindow.grid(column=0, row=0, columnspan=2)
-        self.Button1.grid(column=0, row=1, pady=20)
-        self.Button2.grid(column=1, row=1)
+        self.template_window.Button1.bind("<Button-1>", self.button1press)
+        self.template_window.Button2.bind("<Button-1>", self.button2press)
 
-        self.Button1.bind("<Button-1>", self.button1press)
-        self.Button2.bind("<Button-1>", self.button2press)
 
     def button1press(self, event=None):
         self.parent.destroy()
-        self.newframe_parent.destroy()
+        self.template_window_parent.destroy()
 
 
     def button2press(self, event=None):
-        self.newframe_parent.destroy()
+        self.template_window_parent.destroy()
 
 
 
