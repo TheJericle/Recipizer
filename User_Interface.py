@@ -17,7 +17,8 @@ from PIL import Image, ImageTk
 from create_recipe import Createrecipe
 from requestRecipes import RequestRecipes
 
-# -----------------------------------------------------------------
+from core.Recipe_Class import Recipe
+from core.Recipe_Book_Class import RecipeBook# -----------------------------------------------------------------
 
 class UserInterface(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
@@ -39,8 +40,10 @@ class UserInterface(tk.Frame):
         self.add_recipe_b.bind("<Button-1>", self.add_recipes)
         self.request_recipes_b.bind("<Button-1>", self.request_recipes)
 
+        self.recipe_book = RecipeBook()
+        self.recipe_book.parser("Recipe_Book.txt")
 
-    ###THIS NEEDS TO BE ADJUSTED SO IT WILL ALWAYS WORKS
+    ###THIS NEEDS TO BE ADJUSTED SO IT WILL ALWAYS WORKS(I.E, the correct fileloc is extracted)
     def set_photo(self, filename):
         cdir = os.getcwd()
         filename = os.path.join("images\\", filename)
@@ -51,20 +54,30 @@ class UserInterface(tk.Frame):
         self.photo_container.config(image=photo)
         self.photo_container.image = photo  # keep a reference!
 
+    #pops up a window, cointaing the add_recipe gui
     def add_recipes(self, event=None):
 
         self.set_photo(filename="Szechuan_Sauce.jpg")
         self.createRecipeWindow = Createrecipe(tk.Toplevel())
         self.createRecipeWindow.grid()
 
-        self.createRecipeWindow.addRecipeButton.bind("<Button-1>", self.createRecipeWindow.add_recipe)
+        #self.createRecipeWindow.addRecipeButton.bind("<Button-1>", self.createRecipeWindow.add_recipe)
+        self.createRecipeWindow.addRecipeButton.bind("<Button-1>",self.submit_recipe)
 
+    #pops up a window, containing the request_recipe window
     def request_recipes(self,event=None):
 
         self.set_photo(filename="caaan_do.jpg")
         self.RequestRecipesWindow = RequestRecipes(tk.Toplevel())
         self.RequestRecipesWindow.grid()
 
+    #A recipe has been submitted, a new window pops up, asking the user if this is what he wants.
+    #The recipe then needs to be extracted from self.createRecipeWindow
+    def submit_recipe(self, event=None):
+        self.createRecipeWindow.add_recipe(event=None)
+        new_recipe = self.createRecipeWindow.new_recipe
+        self.recipe_book.append(new_recipe)
+        self.recipe_book.update_recipe_book()
 
 root = tk.Tk()
 

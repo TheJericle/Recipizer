@@ -77,7 +77,6 @@ class RecipeBook(object):
 
             if line[0] == "Start_Recipe:":
                 if len(recipe)!=0:
-                    print "ok"
                     temp_list = recipe[:]
                     recipe_list += [temp_list]
                 del recipe[:]
@@ -93,7 +92,19 @@ class RecipeBook(object):
         for rp in recipe_list:
             new_recipe = Recipe()
             new_recipe.parser(rp)
+            print("yp")
             self.append(new_recipe)
-            print "completed"
+
+    def update_recipe_book(self):
+        cdir = os.getcwd()
+        fileloc = os.path.join(cdir, "Recipe_Book.txt")
+
+        f = open(fileloc, "w")
+
+        output = self.inverse_parser()
+
+        for line in output:
+            f.write(line+"\n")
+
 
 # -----------------------------------------------------------------

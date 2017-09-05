@@ -52,6 +52,8 @@ class Ingredient(object):
     def unit(self, value):
         if not isinstance(value, str):
             raise TypeError("Try using a string for the unit...")
+        else:
+            self._unit = value
 
     def inverse_parser(self):
 

@@ -51,6 +51,9 @@ class dropdrownmenu(tk.Frame):
 
     ###SAME HERE###
     def addIngredientToList(self,ing_name, quantity, unit):
+        if self.check_if_ingredient_in_list(ing_name):
+            return None
+
         self.myList.insert(tk.END, ing_name)
         cdir = os.getcwd()
         filename = "Ingredients.txt"
@@ -59,3 +62,14 @@ class dropdrownmenu(tk.Frame):
 
         f = open(fileloc, "a")
         f.write(ing_name + "\n")
+
+    def check_if_ingredient_in_list(self, ing_name):
+        for ing in self.myList.get(0,tk.END):
+            if ing == ing_name:
+                return True
+        return False
+
+    #Returns the correct index for the ingredient to be added to the list
+    #in such a way that the order stays alphabetically.
+    def find_ingredient_index(self,ing_name):
+        return None

@@ -1,23 +1,23 @@
 Start_Recipe:
-Recipe_Name=test
+Recipe_Name=testing
 Ingredients:
-I1	100	g
-I2	200	kg
-I3	300	mg
-I4	400	cg
+holy_shit	1.0	g
+holy_shit	1.0	g
+holy_shit	1.0	g
 Basic_Explanation:
-uitleg1
-uitleg2
-uitleg3
+Basic_Explanation:
+feagf
+ega
+aeg
 End_Recipe:
 Start_Recipe:
-Recipe_Name=flap
+Recipe_Name=RECIPE2
 Ingredients:
-S1  2   K
-S2  3   V
-S3  4   F
+recipe2	45.0	g
+recipe2	45.0	g
+recipe2	45.0	g
 Basic_Explanation:
-exp1
-exp2
-exp3
+eagg
+aegaeg
+gaegea
 End_Recipe:
