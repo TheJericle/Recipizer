@@ -74,6 +74,8 @@ class Recipe(object):
                 index += 1
                 line = new_recipe[index]
 
+            index+=1
+            line= new_recipe[index]
             while line[0] != "End_Recipe:":
                 self.append(line[0])
                 index +=1

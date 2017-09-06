@@ -119,12 +119,12 @@ class UserInterface(tk.Frame):
     def submit_recipe(self, event=None):
         """
         This function is called when the user is submitting the recipe.
-        The new recipe instance is extraced from the Createrecipe widget and added to
+        The new recipe instance is extracted from the Createrecipe widget and added to
         the recipe book instance.
 
         All redundant window are closed.
 
-        :param event:   the event that triggerd the call to this function, is required to be a parameter of
+        :param event:   the event that triggered the call to this function, is required to be a parameter of
                         the function(see tkinter documentation), but is not required here.
         """
         self.createRecipeWindow.add_recipe(event=None)

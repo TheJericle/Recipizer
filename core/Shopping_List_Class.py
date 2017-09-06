@@ -32,6 +32,24 @@ class ShoppingList(object):
                 index = self.find_ingredient(ing)
                 self._Ingredient_List[index].quantity += ing.quantity
 
+    def __getitem__(self, index):
+        return self._Ingredient_List[index]
+
+    def __len__(self):
+        return len(self._Ingredient_List)
+
+    def __iter__(self):
+        self.index = 0
+        return self
+
+    def next(self):
+        if self.index < len(self):
+            out = self[self.index]
+            self.index+=1
+            return out
+        else:
+            raise StopIteration
+
     def find_ingredient(self, new_ing):
         index = -1
         i = 0
@@ -67,3 +85,4 @@ class ShoppingList(object):
             f.write("\n")
 
 # -----------------------------------------------------------------
+

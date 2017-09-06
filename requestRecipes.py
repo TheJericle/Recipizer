@@ -14,6 +14,9 @@ import Tkinter as tk
 from gui.quantityScroll import quantityScroll
 from gui.text_with_two_buttons_widget import TextTwoButtons
 
+from core.Shopping_List_Class import ShoppingList
+from core.Recipe_Class import Recipe
+from core.Recipe_Book_Class import RecipeBook
 
 class RequestRecipes(tk.Frame):
     """
@@ -27,6 +30,7 @@ class RequestRecipes(tk.Frame):
     def __init__(self, parent, recipe_book, *args, **kwargs):
         tk.Frame.__init__(self, parent)
 
+        self.parent = parent
         self.recipe_book = recipe_book
         self.frame = tk.Frame(parent)
 
@@ -41,7 +45,7 @@ class RequestRecipes(tk.Frame):
 
         self.receive_shopping_list_b = tk.Button(self.frame, text="Retreive Shopping List")
 
-        self.receive_shopping_list_b.bind("<Button-1>", self.receive_shopping_list)
+        self.receive_shopping_list_b.bind("<Button-1>", self.show_recipe_list)
 
 
     def grid(self, **kwargs):
@@ -60,13 +64,16 @@ class RequestRecipes(tk.Frame):
         self.NoRecipes.grid(row=5, column=0)
         self.receive_shopping_list_b.grid(row=2, column=1, sticky=tk.N, padx=15)
 
-    def receive_shopping_list(self, event=None):
+    def show_recipe_list(self, event=None):
         """
-        Retrieves a shopping list for the user. It starts by observing the required settings and then
-        tries to find the requested number of recipies.
+        A window is popped up, showing the list of recipes. THe user can then reject or accept this list.
+        Two bindings are created in this function:
 
-        These Recipes are then shown to the user, if he/she accepts it, a shopping list is provided.
+        :Button1 binding:   If selected, the user has accepted the recipe list and should eventually
+                            receive a shopping list
 
+        :Button2 binding:   If selected, the user has rejected the recipe list and this function will be called
+                            recursively.
 
         :param event:   the event that triggered the call to this function, is required to be a parameter of
                         the function(see tkinter documentation), but is not required here.
@@ -75,32 +82,63 @@ class RequestRecipes(tk.Frame):
         no_people = self.NoPeople.hscale.get()
         no_recipes = self.NoRecipes.hscale.get()
 
-        recipe_list = self.recipe_book.get_recipes(no_recipes=no_recipes)
+        self.recipe_list = self.recipe_book.get_recipes(no_recipes=no_recipes)
 
-        self.text_with_two_buttons_widget_parent = tk.Toplevel()
-        self.text_with_two_buttons_widget = TextTwoButtons(self.text_with_two_buttons_widget_parent)
-        self.text_with_two_buttons_widget.grid()
-        self.text_with_two_buttons_widget.set_name_button1("Satisfied")
-        self.text_with_two_buttons_widget.set_name_button2("Try again")
+        self.recipe_list_widget_parent = tk.Toplevel()
+        self.recipe_list_widget = TextTwoButtons(self.recipe_list_widget_parent)
+        self.recipe_list_widget.grid()
+        self.recipe_list_widget.set_name_button1("Satisfied")
+        self.recipe_list_widget.set_name_button2("Try again")
 
-        self.text_with_two_buttons_widget.Button1.bind("<Button-1>", self.button1press)
-        self.text_with_two_buttons_widget.Button2.bind("<Button-2>", self.button2press)
+        self.recipe_list_widget.Button1.bind("<Button-1>", self.button1press)
+        self.recipe_list_widget.Button2.bind("<Button-1>", self.button2press)
 
-        self.text_with_two_buttons_widget.textWindow.config(width=40, height=len(recipe_list))
+        self.recipe_list_widget.textWindow.config(width=40, height=len(self.recipe_list))
 
-        for rp in recipe_list:
-            self.text_with_two_buttons_widget.textWindow.insert(tk.END, rp.name+"\n")
-
-
-
-        #shopping_list = self.recipe_book.request_shopping_list(number_of_recipes=no_recipes, number_of_people=no_people)
-        #text_shopping_list = shopping_list.parser()
+        for rp in self.recipe_list:
+            self.recipe_list_widget.textWindow.insert(tk.END, rp.name + "\n")
 
     def button1press(self, event=None):
-        self.text_with_two_buttons_widget_parent.destroy()
+        self.recipe_list_widget_parent.destroy()
+        self.show_shopping_list()
 
     def button2press(self, event=None):
-        self.text_with_two_buttons_widget_parent.destroy()
+        self.recipe_list_widget_parent.destroy()
+        self.show_recipe_list(event)
 
+    def show_shopping_list(self):
+        self.shopping_list_widget_parent = tk.Toplevel()
+        self.shopping_list_widget = TextTwoButtons(self.shopping_list_widget_parent)
 
+        self.shopping_list_widget.grid()
+        self.shopping_list_widget.set_name_button1("Satisfied")
+        self.shopping_list_widget.set_name_button2("Extra Satisfied")
+
+        self.shopping_list_widget.Button1.bind("<Button-1>", self.button1press_n)
+        self.shopping_list_widget.Button2.bind("<Button-1>", self.button2press_n)
+
+        shopping_list = ShoppingList()
+        for rp in self.recipe_list:
+            for ing in rp._Ingredients:
+                shopping_list.append(ing)
+
+        self.shopping_list_widget.textWindow.config(width=40, height = len(shopping_list))
+
+        index = 0
+        print(len(shopping_list))
+        for ing in shopping_list:
+            print(index)
+            index+=1
+            print(type(ing))
+            print(ing.name)
+            self.shopping_list_widget.textWindow.insert(tk.END, ing.inverse_parser() + "\n")
+        self.shopping_list_widget.textWindow.insert(tk.END, "trala")
+
+    def button1press_n(self, event=None):
+        self.shopping_list_widget_parent.destroy()
+        self.parent.destroy()
+
+    def button2press_n(self, event=None):
+        self.shopping_list_widget_parent.destroy()
+        self.parent.destroy()
 

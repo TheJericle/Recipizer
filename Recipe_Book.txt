@@ -1,126 +1,14 @@
 Start_Recipe:
-Recipe_Name=testing
+Recipe_Name=Courgette-Rijst schotel
 Ingredients:
-holy_shit	1.0	g
-holy_shit	1.0	g
-holy_shit	1.0	g
+Rijst	125.0	g
+Gehakt(gemengd)	300.0	g
+Courgette	1.0	stuks
+Geraspte kaas	1.0	zakje
 Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-feagf
-ega
-aeg
-End_Recipe:
-Start_Recipe:
-Recipe_Name=RECIPE2
-Ingredients:
-recipe2	45.0	g
-recipe2	45.0	g
-recipe2	45.0	g
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-eagg
-aegaeg
-gaegea
-End_Recipe:
-Start_Recipe:
-Recipe_Name=ag
-Ingredients:
-f	1.0	f
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-ag
-End_Recipe:
-Start_Recipe:
-Recipe_Name=aeg
-Ingredients:
-f	1.0	f
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-aeg
-End_Recipe:
-Start_Recipe:
-Recipe_Name=azf
-Ingredients:
-f	1.0	f
-f	1.0	f
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-azf
-azf
-End_Recipe:
-Start_Recipe:
-Recipe_Name=geahj
-Ingredients:
-f1	1.0	f
-f1	1.0	f
-f1	1.0	f
-f1	1.0	f
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-azf
-afz
-zaf
-End_Recipe:
-Start_Recipe:
-Recipe_Name=zae
-Ingredients:
-f	1.0	f
-f	1.0	f
-f	1.0	f
-Basic_Explanation:
-Basic_Explanation:
-Basic_Explanation:
-age
-aeg
-eg
-End_Recipe:
-Start_Recipe:
-Recipe_Name=aeg
-Ingredients:
-f	1.0	f
-Basic_Explanation:
-Basic_Explanation:
-aeg
-End_Recipe:
-Start_Recipe:
-Recipe_Name=aeggea
-Ingredients:
-f	1.0	f
-Basic_Explanation:
-Basic_Explanation:
-gagae
-End_Recipe:
-Start_Recipe:
-Recipe_Name=gea
-Ingredients:
-f	1.0	f
-Basic_Explanation:
-aeg
+Snij de Courgette en stoof.
+Bak gehakt in zelfde pan.
+Kook rijst.
+Meng alles in ovenschotel met geraspte kaas naar believen
+Even in de Oven
 End_Recipe:
