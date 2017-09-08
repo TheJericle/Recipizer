@@ -1,14 +1,29 @@
 Start_Recipe:
-Recipe_Name=Courgette-Rijst schotel
+Recipe_Name=Courgette-Rijst
 Ingredients:
 Rijst	125.0	g
 Gehakt(gemengd)	300.0	g
 Courgette	1.0	stuks
-Geraspte kaas	1.0	zakje
+Geraspte_kaas	1.0	zakje
 Basic_Explanation:
-Snij de Courgette en stoof.
-Bak gehakt in zelfde pan.
-Kook rijst.
-Meng alles in ovenschotel met geraspte kaas naar believen
-Even in de Oven
+Snij
+Bak
+Kook
+Meng
+Even
+End_Recipe:
+Start_Recipe:
+Recipe_Name=Pasta-Scampi-ketch
+Ingredients:
+pasta	100.0	g
+scampi	200.0	g
+Gerasptekaas	1.0	zakje
+ketchup	1.0	lepel
+appel	0.5	stuk
+tomaat	1.0	stuk
+Room	100.0	ml
+ajuin	1.0	stuk
+Basic_Explanation:
+Room en ketchuptoevoegen aan gebakken ajuin en tomaat, laten sudderen.
+Scampi en appel toevoegen.
 End_Recipe:

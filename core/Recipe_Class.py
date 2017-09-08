@@ -34,6 +34,26 @@ class Recipe(object):
         else:
             self._name = value
 
+    def __eq__(self, other):
+        if not isinstance(other, Recipe):
+            return False
+        else:
+            if self.name !=other.name:
+                return False
+            if len(self._Basic_Explanation) != len(other._Basic_Explanation):
+                return False
+            if len(self._Ingredients) != len(other._Ingredients):
+                return False
+            for ing1,ing2 in zip(self._Ingredients,other._Ingredients):
+                if ing1!=ing2:
+                    return False
+
+            for exp1,exp2 in zip(self._Basic_Explanation,other._Basic_Explanation):
+                if exp1!=exp2:
+                    return False
+
+        return True
+
     def append(self, thingie):
         if isinstance(thingie, Ingredient):
             self._Ingredients.append(thingie)

@@ -21,6 +21,12 @@ class Ingredient(object):
         if self.name != other.name:
             return False
         return True
+    def __mul__(self, value):
+        if not isinstance(value, int):
+            raise TypeError("An ingredient can only be multiplied by an integer or a float")
+        else:
+            self._quantity *= value
+            return self
 
     @property
     def name(self):

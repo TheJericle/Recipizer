@@ -1,0 +1,13 @@
+-Fix the unit system
+
+-Make sure, whenever a number of recipes are request, the same recipe can't be returned several times (CHECK!)
+
+-Add the feature so that the number of people is taken into account (Check!)
+
+-Add a feature where the user can select one recipe and replace it with another.
+
+-Add a feature where the user can select a recipe and demand more info
+
+-Make sure whenever ingredients are added, containing spaces (for example "geraspte kaas") this won't cause any problmes
+(right now the space is removed and "kaas" will be seen as the unit. (same for gerapste_kaas etc...)
+

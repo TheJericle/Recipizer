@@ -38,20 +38,21 @@ class UserInterface(tk.Frame):
 
         self.frame = tk.Frame(parent)
 
-
+        #Add Recipe Button
         self.add_recipe_b = tk.Button(self.frame, text="Create New Recipe")
-        self.add_recipe_b.grid(column=0, row=0, padx=20, pady=20)
 
+        #Request Recipe Button
         self.request_recipes_b = tk.Button(self.frame, text= "Request Recipes")
 
-
+        #Image is placed underneath the buttons
         self.photo_container = tk.Label()
         self.set_photo(filename="What_Is_My_Purpose.jpg")
 
-
+        #Bindings
         self.add_recipe_b.bind("<Button-1>", self.add_recipes)
         self.request_recipes_b.bind("<Button-1>", self.request_recipes)
 
+        #Recipe Book is loaded
         self.recipe_book = RecipeBook()
         self.recipe_book.parser("Recipe_Book.txt")
 
@@ -64,6 +65,7 @@ class UserInterface(tk.Frame):
 
         self.frame.grid()
         self.request_recipes_b.grid(column=1, row=0)
+        self.add_recipe_b.grid(column=0, row=0, padx=20, pady=20)
         self.photo_container.grid(column=0, row=1)
 
     #THIS NEEDS TO BE ADJUSTED SO IT WILL ALWAYS WORKS(I.E, the correct fileloc is extracted)
@@ -120,7 +122,8 @@ class UserInterface(tk.Frame):
         """
         This function is called when the user is submitting the recipe.
         The new recipe instance is extracted from the Createrecipe widget and added to
-        the recipe book instance.
+        the recipe book instance. This function cannot be placed in the create_recipe widget, since
+        the new recipe needs to be extracted here and added to the recipeBook.
 
         All redundant window are closed.
 

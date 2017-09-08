@@ -25,7 +25,10 @@ from core.Ingredient_Class import Ingredient
 
 
 class Createrecipe(tk.Frame):
+    """
+    This widget creates a window containing everything the user needs to submit a new recipe
 
+    """
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent)
 
@@ -33,7 +36,6 @@ class Createrecipe(tk.Frame):
         self.frame = tk.Frame(parent)
 
         #Add Recipe_Name_Box:
-
         self.recipe_name_label = tk.Label(self.frame, text= "Recipe Name:")
         self.recipe_name_entry = tk.Entry(self.frame)
 
@@ -72,6 +74,11 @@ class Createrecipe(tk.Frame):
 
 
     def grid(self, **kwargs):
+        """
+          Function places all the different widgets in the correct locations using the grid manager.
+
+          :param kwargs: may contain any number of arguments(see tkinter grid documentation)
+          """
         self.frame.grid(**kwargs)
         self.recipe_name_label.grid(column=1,row=0,pady=10)
         self.recipe_name_entry.grid(column=2,row=0)
@@ -86,14 +93,37 @@ class Createrecipe(tk.Frame):
         self.addRecipeButton.grid(row=3, column=2)
 
     def get_currently_selected_ingredient(self, event=None):
+        """
+        Function detects the currently selected ingredient from the dropdownmenu and sets it as
+        the current ingredient
+
+        :param event:   the event that triggerd the call to this function, is required to be a parameter of
+                        the function(see tkinter documentation), but is not required here.
+        """
         currentlyselected = self.dropDownMenuWidget.myList.get(tk.ACTIVE)
         self.addIngredientWidget.setIngredientLabel(currentlyselected)
 
     def get_currently_selected_quantity(self, event=None):
+        """
+        Function detects the currently selected quantity from the quantity scroller and sets it as
+        the current quantity
+
+        :param event:   the event that triggerd the call to this function, is required to be a parameter of
+                        the function(see tkinter documentation), but is not required here.
+        """
         currentlyselected = self.quantityScroll1.hscale.get()
         self.addIngredientWidget.setQuantityLabel(currentlyselected)
 
     def extract_ingredient(self, event=None):
+        """
+        This function is called when the "add new ingredient" button is selected. It extracts all the relevant information
+        and stores it in the designated textbox.
+        It also checks if the ingredient is already present in the list of possible ingredienst, if not this name will
+        be added to the list.
+
+        :param event:   the event that triggerd the call to this function, is required to be a parameter of
+                        the function(see tkinter documentation), but is not required here.
+        """
         ing_name = self.addIngredientWidget.entry_ing_name.get()
         quantity = self.addIngredientWidget.entry_quantity.get()
         unit = self.addIngredientWidget.entry_unit.get()
@@ -110,13 +140,27 @@ class Createrecipe(tk.Frame):
         self.add_ingredient_to_textbox(ing_name, quantity, unit)
 
     def add_ingredient_to_textbox(self, ing_name, quantity, unit):
+        """
+        This function adds all the ingredient information to the designated textbox.
+
+        :param ing_name: Name of the ingredient
+        :param quantity: quantity of the ingredient
+        :param unit: unit of the ingredient
+
+        """
         ing_name = ing_name.split("\n")[0]
         self.ingredientTextBox.insert(tk.END, ing_name+"\t"+quantity+"\t"+unit+"\n")
         cheight = self.ingredientTextBox.cget("height")
         self.ingredientTextBox.config(height=int(cheight)+1)
 
-    #This functions prepares everything to add a recipe to the recipebook.
+
     def add_recipe(self, event=None):
+        """
+        This functions prepares everything to add a recipe to self.RecipeBook.
+
+        :param event:   the event that triggerd the call to this function, is required to be a parameter of
+                        the function(see tkinter documentation), but is not required here.
+        """
 
         #Relevant Recipe Info is extracted.
         ingredient_List = self.retreive_shoppingList()

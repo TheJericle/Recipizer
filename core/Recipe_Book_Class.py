@@ -46,11 +46,18 @@ class RecipeBook(object):
         return self._Recipe_List[rv]
 
     def get_recipes(self, no_recipes):
-        rp_list = []
-        for i in range(no_recipes):
-            new_recipe = self.get_random_recipe()
-            rp_list.append(new_recipe)
+        if len(self)<no_recipes:
+            raise LookupError("There are not enough recipes in the RecipeBook...")
 
+        rp_list = []
+        index = 0
+        while index <no_recipes:
+            new_recipe = self.get_random_recipe()
+            if new_recipe in rp_list:
+                continue
+            else:
+                rp_list.append(new_recipe)
+            index+=1
         return rp_list
 
     def make_shopping_list(self, rp_list):

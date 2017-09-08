@@ -41,7 +41,7 @@ class RequestRecipes(tk.Frame):
         self.NoPeople = quantityScroll(self.frame, range=(0,20))
 
         self.NoRecipes_Label = tk.Label(self.frame, text="How many Recipes?")
-        self.NoRecipes = quantityScroll(self.frame, range=(0,100))
+        self.NoRecipes = quantityScroll(self.frame, range=(0,20))
 
         self.receive_shopping_list_b = tk.Button(self.frame, text="Retreive Shopping List")
 
@@ -79,7 +79,6 @@ class RequestRecipes(tk.Frame):
                         the function(see tkinter documentation), but is not required here.
         """
 
-        no_people = self.NoPeople.hscale.get()
         no_recipes = self.NoRecipes.hscale.get()
 
         self.recipe_list = self.recipe_book.get_recipes(no_recipes=no_recipes)
@@ -107,6 +106,8 @@ class RequestRecipes(tk.Frame):
         self.show_recipe_list(event)
 
     def show_shopping_list(self):
+
+        no_people = self.NoPeople.hscale.get()
         self.shopping_list_widget_parent = tk.Toplevel()
         self.shopping_list_widget = TextTwoButtons(self.shopping_list_widget_parent)
 
@@ -124,13 +125,8 @@ class RequestRecipes(tk.Frame):
 
         self.shopping_list_widget.textWindow.config(width=40, height = len(shopping_list))
 
-        index = 0
-        print(len(shopping_list))
         for ing in shopping_list:
-            print(index)
-            index+=1
-            print(type(ing))
-            print(ing.name)
+            ing*=no_people
             self.shopping_list_widget.textWindow.insert(tk.END, ing.inverse_parser() + "\n")
         self.shopping_list_widget.textWindow.insert(tk.END, "trala")
 
@@ -141,4 +137,6 @@ class RequestRecipes(tk.Frame):
     def button2press_n(self, event=None):
         self.shopping_list_widget_parent.destroy()
         self.parent.destroy()
+
+
 
